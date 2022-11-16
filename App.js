@@ -2,40 +2,41 @@ import React, { useState } from "react";
 import {Modal, Dimensions, StyleSheet, Text, Pressable, View } from "react-native";
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const windowWidth = Dimensions.get('screen').width.toFixed();
-  const windowHeight = Dimensions.get('screen').height.toFixed();
+  const [modalVisible, setModalVisible] = useState(false); // Definindo as constantes para a visibilidade do Modal;
+  const windowWidth = Dimensions.get('screen').width.toFixed(); // Definindo a constante para receber o valor da largura da tela;
+  const windowHeight = Dimensions.get('screen').height.toFixed(); // Definindo a constante para receber o valor da altura da tela;
 
   return (
     <View style={styles.centeredView}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
+      <Modal // Inicializando o componente Modal;
+        animationType="fade" // Aplicando a animação do tipo fade ao Modal;
+        transparent={true} // Setando a transparência do Modal;
+        visible={modalVisible} // Instanciando a visibilidade do Modal;
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Dados do dispositivo {'\n\n'} Altura: {windowHeight} {'\n'} Largura: {windowWidth}</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+        <View style={styles.centeredView}> // Componente respectivo à estilização do Modal;
+          <View style={styles.modalView}> // Componente respectivo à estilização do Modal;
+            <Text style={styles.modalText}>Dados do dispositivo {'\n\n'} Altura: {windowHeight} {'\n'} Largura: {windowWidth}</Text> // Exibindo as informações das constantes dentro do Modal;
+            <Pressable // Componente Pressable iniciado;
+              style={[styles.button, styles.buttonClose]} //Definindo o estilo do botão;
+              onPress={() => setModalVisible(!modalVisible)} // Instanciando a função para alterar a visibilidade do Modal;
             >
-              <Text style={styles.textStyle}>Fechar</Text>
-            </Pressable>
+              <Text style={styles.textStyle}>Fechar</Text> // Iniciando o botão para fechar o Modal;
+            </Pressable> // Encerrando o componente Pressable;
           </View>
         </View>
       </Modal>
 
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
+      <Pressable // Iniciando um novo componente Pressable;
+        style={[styles.button, styles.buttonOpen]} // Estilizando o componente;
+        onPress={() => setModalVisible(true)} // A função neste estado vai estar como true, então o Modal será exibido;
       >
-        <Text style={styles.textStyle}>Exibir Modal</Text>
+        <Text style={styles.textStyle}>Exibir Modal</Text> // Iniciando o texto do botão de abrir o Modal;
       </Pressable>
     </View>
   );
 };
 
+// PARTE DE ESTILIZAÇÃO
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
